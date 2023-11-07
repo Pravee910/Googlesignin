@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'login.css' %}"/>
+    <script src="{% static 'login.js' %}" defer></script>
+   
+</head>
+<body>
+    <div class="container">
+ 
+        <h2>Login to your account</h2>
+    <form class="card" id="form"  action="{% url 'forgot' %}">
+        {% csrf_token %} 
+        
+      
+    <div class="input-group">
+        <label>Email or Phone number:</label><br>
+        <input type="text" id="email" name="email" placeholder="Email or Phone number" >
+        <div class="error"></div>
+    </div><br>
+    <div class="input-group">
+        <label>Password :</label><br>
+        <input type="password" id="password" name="password" placeholder="Password" >
+        <div class="error"></div>
+    </div>
+    <div >
+        <input type="checkbox" id="remember" name="remember">
+        <label for="remember">Remember Me</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           <a  href="forgotpassword">Forgot password </a>
+      </div><br>
+    
+    
+      <div>
+        
+        <!-- <button onclick="validateInput()">Submit</button> -->
+    <button type="submit">Login</button>
+    </div>
+    <div >
+        <!-- <p><a  href="register.html">Create account </a></p> -->
+        <p><a  href="/">Create account </a></p>
+      </div>
+      <div>
+        <p class="hr-lines">or</p>
+    </div>
+    <div class="google-sign-in-button">
+        <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+        <!-- <div class="g-signin2" data-onsuccess="onSignIn" value="continue with google"></div> -->
+        {% load socialaccount %}
+
+        
+        <a href="{% provider_login_url 'google' %}" style="color: white;text-decoration: none;"><div>
+           
+            Login with Google    
+   </div></a>
+    </div>
+    </form>
+
+</div>
+</body>
+</html>

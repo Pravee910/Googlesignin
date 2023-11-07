@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>welcome</h1>
+    {% load socialaccount %}
+
+    {% if user.is_authenticated %}
+    <p>You are signed in as {{ user.email }}</p>
+    <p>name is  {{ user.username }}</p>
+    <p>password {{ user.password }}</p>
+    <!-- <p>You are signed in as {{ user.firstname }}</p> -->
+    <!-- <p>You are signed in as {{ user.lastname }}</p> -->
+    {% endif %}
+    
+ 
+
+  
+    <form action="{% url 'logout' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit" class="logoutbtn">Logout</button>
+    </form>
+
+
+    <script>
+        function preventBack() {
+            window.history.forward()
+            
+        }
+        preventBack();
+        window.onunload = function () {
+            // You can leave this function empty or do nothing
+        }
+
+    </script>
+
+    <!-- {% load socialaccount %}
+
+
+    <a href="{% provider_login_url 'google' %}">Login with Google</a><br>
+     <a href="https://accounts.google.com/signin/v2/identifier">Login with Google</a> -->
+
+
+<!-- Check if the user is authenticated -->
+<!-- {% if user.is_authenticated %}
+    <p>You are signed in as {{ user.email }}</p>
+    <a href="logout">Logout</a>
+{% endif %}  -->
+</body>
+</html>

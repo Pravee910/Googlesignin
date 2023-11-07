@@ -1,0 +1,104 @@
+{% load static %}
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <meta name="google-signin-client_id" content="329745389363-g7609a1dsqer1jbvtuck29o74okh2q3k.apps.googleusercontent.com"> -->
+    <!-- <script src="https://apis.google.com/js/platform.js" async defer></script> -->
+    <!-- <script src="register.js" defer></script> -->
+
+    <title>Registration</title>
+    <link rel="stylesheet" href="{% static 'register.css' %}"/>
+    <script src="{% static 'register.js' %}" defer></script>
+</head>
+<body>
+    <div class="container">
+ 
+        <h2>Create Account Here</h2>
+    <form class="card" id="form" action="{% url 'login_view' %}">
+        {% csrf_token %}
+    
+        <div class="input-group">
+        <label for="name">Full Name :</label>
+        <input type="text" name="firstname" id="firstname" placeholder="Firstname">
+        <div class="error"></div>
+        </div><br>
+      
+   
+    <div class="input-group">
+        <label>Email :</label><br>
+        <input type="text" id="email" name="email" placeholder="Email" >
+        <div class="error"></div>
+    </div><br>
+    <div class="input-group">
+        <label>Password :</label><br>
+        <input type="password" id="password" name="password" placeholder="Password" >
+        <div class="error"></div>
+    </div><br>
+    <div class="input-group">
+        <label>Confirm Password :</label>
+        <input type="password" id="cpassword" name="cpassword" placeholder="Confirm password" >
+        <div class="error"></div>
+    </div><br>
+    <div class="input-group">
+        <label>Phone number :</label>
+        <input type="tel" id="phonenumber" name="phonenumber" placeholder="Phone number">
+        <div class="error"></div>
+    </div><br>
+    <div class="input-group">
+        <label>Date Of  Birth :</label>
+        <input type="date" id="DOB" name="DOB" >
+        <div class="error"></div>
+    </div><br>
+    <div>
+       
+        <button type="submit">Sign up</button>
+    </div>
+
+   
+    <div >
+        <p>Already have an account? <a  href="login" >Sign in</a>.</p>
+      </div>
+      <div>
+        <p class="hr-lines">or</p>
+    </div>
+      
+     <div class="google-sign-in-button"> 
+       
+
+        <!-- <div class="g-signin2" data-onsuccess="onSignIn" value="continue with google"></div> -->
+        {% load socialaccount %}
+
+  
+
+
+        
+        <a href="{% provider_login_url 'google' %}" style="color: white;text-decoration: none;"><div>
+           
+            Login with Google   
+           
+            <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
+   </div></a>
+    <!-- </div> -->
+      <!-- <div class="google-sign-in-button">
+   
+         <a  href=https://accounts.google.com/ style="color: white;text-decoration: none;">
+            <div>
+           
+                     Login with Google    
+            </div>
+               
+        </a>
+    </div> -->
+    
+ 
+    </form>
+
+</div>
+
+  
+</body>
+</html>
